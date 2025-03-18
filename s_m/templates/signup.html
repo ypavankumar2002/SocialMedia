@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+   <center >
+    <br>
+    <div style="border: 2px solid black; width: 450px; height: 380px; background-color: rgb(103, 225, 150); border-radius: 30px;"><br>
+        <h1 style="font-style: italic;"> Signup Here !   </h1><br>
+        <form action="" method="POST">
+            {% csrf_token %}
+        
+            <label for="">USER NAME:</label>
+            <input type="text" name="un" id="" placeholder="Enter you're name"> <br><br>
+    
+            <label for="">USER EMAIL:</label>
+            <input type="email" name="email" id="" placeholder="Enter Email"><br><br>
+            <label for="">PASSWORD:</label>
+            <input type="password" name="pass1" id="" placeholder="Enter Password"><br><br>
+            <label for="">CONFIRM PASS:</label>
+            <input type="password" name="pass2" id="" placeholder="Enter Confirm Password"><br><br>
+        
+        <button class="btn btn-warning" style="width: 300px;">Signup</button>
+        
+        </form>
+    </div><br>
+<div style="border: 1px solid black; width: 450px; height: 70px; background-color: rgba(154, 53, 105, 0.103);">
+    <br>
+    <h5> Already Have an account? <a href=" {% url 'login' %} " style="text-decoration: none;">Login</a>   </h5>
+</div>
+   </center>
+<br><br><br>
+
+
+{% endblock content %}
+

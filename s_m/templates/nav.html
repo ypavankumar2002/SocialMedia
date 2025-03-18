@@ -1,0 +1,31 @@
+
+
+{% block content %}
+
+
+
+<div style="display: flex; flex-direction: row; list-style-type: none;  justify-content: space-around;
+ width: 350px;">
+    
+    
+        <li><a href="{% url 'main' %} " class="btn btn-primary"> Home </a></li>
+        <li><a href="{% url 'about' %}" class="btn" style="background-color: burlywood;">About Site</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'logout' %} " class="btn btn-warning"> Logout </a></li>
+        <li><a href="{%url 'profile' %} " class="btn btn-info">Profile</a></li>
+
+        {% else %}
+        <li> <a href="{% url 'login' %} " class="btn btn-danger" > Login </a> </li>
+        <li><a href="{% url 'signup' %} " class="btn btn-warning"> Signup </a></li>
+        {% endif %}
+      
+    </div>
+
+
+ 
+
+
+
+
+{% endblock content %}
+

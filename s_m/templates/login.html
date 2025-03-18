@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<br><br>
+<center>
+  {% if msg %}
+  <h5 style="color: red;">{{msg}} </h5>
+    {% endif  %}
+   <div style="border: 2px solid rgb(232, 31, 95); width: 400px; height: 270px; background-color: rgb(218, 85, 123); border-radius: 30px;">
+    
+    <h1 style="font-style: italic;"> Login Here !   </h1><br>
+    <form method="POST">
+        {% csrf_token %}
+        <label for=""> USERNAME: </label>
+        <input type="text" name="name" id="log" placeholder="Enter you're name"><br><br>
+
+        <label for=""> PASSWORD: </label>
+        <input type="password" name="pass" id="log" placeholder="Enter Password"> <br><br>
+
+        <button class="btn btn-primary" style="width: 280px;">Login</button><br>
+        
+    </form>
+
+   </div>
+<br>
+
+   <div style="border: 1px solid black; width: 400px; height: 80px; background-color: rgba(113, 27, 62, 0.333);"><br>
+
+    <h5>Don't have a account? <a href="{% url 'signup'%} " style="text-decoration: none;"> signup </a></h5>
+   </div>
+</center>
+   
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

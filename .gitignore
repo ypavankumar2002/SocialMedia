@@ -1,0 +1,8 @@
+# # Ignore virtual environment
+# venv/  # or the name of your virtual environment folder
+# *.pyc
+# __pycache__/
+
+my_env/
+*.pyc
+__pycache__/

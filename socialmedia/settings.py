@@ -136,7 +136,7 @@ LOGIN_URL = '/login/'
 
 # Deploying
 
-ALLOWED_HOSTS =['socialmedia-9tet.onrender.com']
+ALLOWED_HOSTS =['socialmedia-9tet.onrender.com', 'localhost', '127.0.0.1']
 
 import os
 

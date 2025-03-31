@@ -1,43 +1,46 @@
 {% extends 'main.html' %}
 {% block content %}
+<br>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+   
+       
+    <h1>
+    <span style="visibility: hidden;">lllllllllllllllllllllll</span> 
+<span style="color: rgb(44, 44, 240); font-style: italic;
+background-color: rgb(96, 214, 214);border-radius: 10px;
+ font-style: italic; color: rgb(8, 8, 7);justify-content: center;">Welcome To Social Media Site </span>
+</h1>
+    
+    <div>
+        <form action="{%  url 'search' %}" method="GET">
+            {% csrf_token %}
+         <input type="search" name="q" id="" placeholder="Search by Title" 
+         style="border: 3px solid rgb(168, 88, 27);
+          border-radius: 30px 10px;" >
+          <input type="submit" name="" id="" value="Search" class="btn btn-success">
+    
+        </form>
+     </div>
+</div>
 
 <br>
-<div style="float: right;">
-    <form action="{%  url 'search' %}" method="GET">
-        {% csrf_token %}
-     <input type="text" name="q" id="" placeholder="Search" style="border: 3px solid rgb(168, 88, 27);
-      border-radius: 20px;" >
-      <input type="submit" name="" id="" value="Search" class="btn btn-success">
-
-    </form>
- </div>
-
-<center>
-    <span style="visibility: hidden;">llllllllllllll</span>
-<h1 style="color: rgb(44, 44, 240); font-style: italic;
- background-color: rgb(22, 185, 130);display: inline;border-radius: 10px;
-  font-style: italic; color: black;">
- Welcome To Social Media Site </h1>
- 
-</center><br>
-
  
 
-<div style="display: grid; grid-template-columns: 310px 310px 310px 310px ;grid-gap: 2px;">
+<div style="display: flex; flex-wrap: wrap;">
 
     {% for post in posts  %}
    
- <div style=" width: 300px; background-color: rgba(123, 115, 241, 0.315); border-radius: 10px;">
-  
+ <div style="border: 1px solid green; margin: 5px; width: 300px;
+  background-color: rgba(229, 235, 234, 0.934); border-radius: 10px;">
 <br>
     {% if post.image %}
-    <center> <img src="{{ post.image.url }}" alt=""  width="300px" height="300px"></center> <br><br>
-
-
+    <center> <img src="{{ post.image.url }}" alt=""  width="280px" height="350px"></center> 
+<br><br>
     {% else %}
-    <video src="{{ post.video.url }}" width="300px" height="300px" muted controls loop autoplay></video>
-    {% endif %}
-    <center><h3> Title: {{ post.title }} </h3></center>
+<video src="{{ post.video.url }}" width="300px" height="380px" muted controls loop autoplay></video>
+    {% endif %} 
+    <center><h4>  Title: <small style="border: 1px dotted blue; background-color: rgb(241, 182, 182);" >  {{  post.title }} </small></h4></center>
+ 
 </div>
 
 

@@ -129,6 +129,19 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Dynamic Image URLs
+# In frameworks like Django, URLs for images are often dynamic:
+# Relative Path: The database might store a relative path ().
+# Combining Paths: Django combines this relative path with  
+# to generate the full URL dynamically when calling  on an .
+# For example:
+# {{ object.image.url }}
+# This automatically outputs the full URL ().
+
+
+
+
+
 # Define the URL where users are redirected if they are not logged in
 LOGIN_URL = '/login/'
 
@@ -138,6 +151,9 @@ LOGIN_URL = '/login/'
 
 ALLOWED_HOSTS = ['*']
 
+
+#  If stactic files are present/exists.
+'''
 import os
 
 STATIC_URL = os.path.join(BASE_DIR, 'static')
@@ -157,3 +173,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+'''

@@ -6,7 +6,7 @@
 <center>
 {% if request.user.username %} <br>
     
-      <h4>Hello, <span style="text-transform: capitalize;"> {{ request.user.username }}</span> </h4>
+<h4>Hello, <span style="text-transform: capitalize;"> {{ request.user.username }}</span> </h4>
    
 
    <br>
@@ -15,12 +15,13 @@
  <div style="height: 80px; border: 2px solid black;
   width: 1200px; border-radius: 20px;background-color: burlywood;" ><br>
     <form action="" enctype="multipart/form-data" method="POST" 
-    style="display: flex; flex-direction: row; justify-content: space-between;">
+    style="display: flex;  justify-content: space-between; ">
         {% csrf_token %}
- 
-        <label for="" style="color: rgba(33, 19, 16, 0.865);">TITLE :</label>
-        <input type="text" name="title" id="" placeholder="Enter the title (max 20)" style="height: min-content; border: 2px solid blue; border-radius: 15px;" maxlength="20">
- 
+
+  <label for="" style="color: rgba(33, 19, 16, 0.865);">TITLE :</label>
+  <input type="text" name="title" id="" placeholder="Enter the title (max 20)"
+    style="height: min-content; border: 2px solid blue; border-radius: 15px;" maxlength="20" required>
+
 
         <label for="">IMAGE:</label>
         <input type="file" name="image" id="" style="height: min-content;">
@@ -40,26 +41,30 @@
 <a href="{% url 'confirm_delete' %}" style="float: right;" class="btn btn-danger">Delete Account</a>
 
  </center><br><br>
-<h3 style="color: rgb(23, 9, 9);"> YOU'RE POSTS :</h3>
+<h3 style="color: rgb(26, 15, 15);"> YOU'RE POSTS :</h3>
 
-
-<div style="display: grid; grid-template-columns: 300px 300px 300px 300px ;grid-gap: 10px; background-color: rgba(98, 163, 32, 0.365);">
+<br>
+<div style="display: flex; flex-wrap: wrap;  background-color: rgba(98, 163, 32, 0.365);">
 
      {% for media in media  %}
     
-  <div style=" width: 300px; background-color: aqua; border-radius: 10px;">
+  <div style="border: 1px solid white; width: 300px;margin: 5px; background-color: rgb(68, 213, 213); border-radius: 10px; flex-basis: 200;">
    <center><h5> Title: {{ media.title }} </h5></center>
 <br>
   {% if media.image %}
-  <img src="{{ media.image.url }}" alt=""  width="300px" height="300px"> <br><br>
-  
+  <center><img src="{{ media.image.url }}" alt=""  width="280px" height="300px"> </center>
+
 
 
    {% else %}
  <video src="{{ media.video.url }}" width="300px" height="300px" controls autoplay muted loop></video>
-{% endif %}
+{% endif %} 
 
-  <center> <button class="btn btn-success"><a href="{% url 'delete' media.id %}" style="text-decoration: none; color: white;"> Delete </a></button><br></center><br>
+  <center>
+    <a href="{% url 'delete' media.id %}" style="text-decoration: none; color: white;">  <button class="btn btn-success">
+      Delete 
+    </button>
+       </a> </center><br>
 </div>
 
 {% endfor %}

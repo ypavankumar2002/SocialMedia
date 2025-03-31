@@ -3,12 +3,13 @@
 
 {% block content %}
 
-<button class="btn btn-danger"> <a href=" {% url 'home' %} " style="text-decoration: none; color: white;"> 
-    Back </a> </button>
+ <a href=" {% url 'home' %} "
+     style="text-decoration: none; color: white;"> 
+   <button class="btn btn-danger"> Back </button></a> 
 
 <center>
 
-    <h4 style="color: rgb(216, 240, 156);"> <u> Results For " {{searched}} "</u> </h4>
+    <h4 style="color: rgb(30, 33, 22);"> <u> Results For " {{searched}} "</u> </h4>
 
 
 
@@ -23,8 +24,9 @@
   
   
       {% else %}
-      <video src="{{   post.video.url }}" width="300px" height="300px" muted controls loop autoplay></video>
+      <video src="{{ post.video.url }}" width="300px" height="300px" muted controls loop autoplay></video>
       {% endif %}
+
   </div>
 
 <br>

@@ -38,7 +38,7 @@ def signup_view(request):
                 return render(request, 'signup.html', {'error': 'user already exits, Try Loging in !'})
         else:
             if p1 != p2:
-                return render(request, 'signup.html', {'msg': 'Passwords Do not Match or invalid pass!'})
+                return render(request, 'signup.html', {'msg': 'Passwords Do not Match !'})
             else:
                 return render(request, 'signup.html', {'un': 'Enter valid name and password !'} )
 
@@ -61,34 +61,35 @@ def login_view(request):
             return render(request, 'login.html', {'msg': 'Invalid Credentials !'} )
     return render(request, 'login.html')
 
+
+
+
 @login_required
 def user_view(request): 
     if request.method == 'POST':
         form = Mediaform(request.POST, request.FILES)
         if form.is_valid():
             form = form.save(commit=False)
-            # task = form.save(commit=False)
-            form.user = request.user
-            # task.user = request.user
+            form.user = request.user           
             form.save()
             return redirect('user')
-    
-    media = Media.objects.filter(user=request.user)
-    # media = request.user.media.all()
-    # media = Media.objects.all()
-    # print(media)
+
+    media = Media.objects.filter(user=request.user)[::-1]
     context = {
         'media': media
     }
     return render(request,'user.html', context)
+    # return render(request, 'user.html')
     # return redirect('user')
 
 
 def home_view(request):
-    posts = Media.objects.all()
-    # print(posts)
+    posts = Media.objects.all().order_by('-id')
+    # print(posts, 'ppppppppp')
+    # pos = Media.objects.all()[::-1]
+    # print(pos)
     context ={
-        'posts': posts
+        'posts': posts,
         }
     return render(request, 'home.html', context )
 
@@ -138,8 +139,8 @@ def search_bar(req):
                 # print(type(ld), 'lllllllllllllll')
                 # print(ld, ';;;;;;;;;;;;;;;;;;;;')
                 post.append(ld[0]['title'])
-                  
-        print(post)
+  
+        # print(post)
         se = []
         for pos in post:
             sp = Media.objects.get(title = pos)

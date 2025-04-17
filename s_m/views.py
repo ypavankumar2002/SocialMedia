@@ -28,11 +28,13 @@ def signup_view(request):
         if p1==p2 and len(p1)>1 and len(un)>1:
             try:
                 if not User.objects.filter(username='un').exists():
-                    User.objects.create_user(
+                    user = User.objects.create_user(
                         username = un,
                         email = em,
                         password = p1
                     )
+                    user.save()
+                    
                     return redirect('login')
             except:
                 return render(request, 'signup.html', {'error': 'user already exits, Try Loging in !'})
